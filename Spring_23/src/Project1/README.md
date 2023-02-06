@@ -1,6 +1,6 @@
 
 <body>
-<h2>Programming Project 1</h2>
+<h1>Programming Project 1</h1>
 <h3>Due Friday, February 17 at 11:59pm</h3>
 
 
