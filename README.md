@@ -15,6 +15,6 @@ This directory contains the source code for all of the CSDS 132 projects for the
   - **Project 4:**  
 
 ## Contact
-I am a TA for CSDS 233 and CSDS 338 as well, so feel free to join my office hours for those classes (TIME/Location TBD). Or just email your questions at any of these:    
+I am a TA for CSDS 233 (Data Structures), CSDS 338 (Operating Systems) and CSDS 391 (AI) as well, so feel free to join my office hours for those classes Fridays 6:00-8:00PM at Nord 204. Or just email your questions at any of these:    
 rxs1182@case.edu  
 rohan.b.singh54@gmail.com  
