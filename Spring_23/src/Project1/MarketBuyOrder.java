@@ -2,7 +2,7 @@ package Project1;
 
 public class MarketBuyOrder extends BuyOrder {
     
-    public MarketBuyOrder(int numShares, double price, Trader trader, char symbol){
+    public MarketBuyOrder(int numShares, double price, Market trader, char symbol){
         super(numShares,price,trader,false,symbol);
     }
 

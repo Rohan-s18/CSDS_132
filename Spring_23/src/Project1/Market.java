@@ -1,5 +1,5 @@
 package Project1;
 
-public class Market {
+public class Market extends Trader {
     
 }
