@@ -86,6 +86,19 @@ public class Market extends Trader {
         return marketMakerSellOrder;
     }
 
+    public void setMarketBuyOrder(MarketBuyOrder marketBuyOrder){
+        this.marketMakerBuyOrder = marketBuyOrder;
+    }
+
+    public void setMarketSellOrder(MarketSellOrder marketSellOrder){
+        this.marketMakerSellOrder = marketSellOrder;
+    }
+
+    public double currentMarketBuyPrice(){
+        if(getBestBuyOrder() != null) return getBestBuyOrder().getPrice();
+        return marketMakerBuyOrder.getPrice();
+    }
+
     
 
 
