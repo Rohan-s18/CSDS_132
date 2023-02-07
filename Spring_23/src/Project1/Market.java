@@ -108,6 +108,47 @@ public class Market extends Trader {
         return (marketMakerBuyOrder!=null && marketMakerSellOrder!=null);
     }
     
+    public boolean isValidOrder(Order order){
+        return ((order.getStockSymbol()==this.getStockSymbol()) && (order.getPrice()>=this.marketMakerBuyOrder.getPrice()) && (order.getPrice() <= this.marketMakerSellOrder.getPrice()));
+    }
+
+    public boolean matchingOrders(BuyOrder buyOrder, SellOrder sellOrder){
+        return ((buyOrder.getPrice()>=sellOrder.getPrice()) && ((!buyOrder.isAllOrNone() && !sellOrder.isAllOrNone()) || (sellOrder.isAllOrNone() && (buyOrder.getNumberShares() >= sellOrder.getNumberShares())) || (buyOrder.isAllOrNone() && (sellOrder.getNumberShares() >= buyOrder.getNumberShares()))));
+    }
+
+    public void addOrderToMarket(BuyOrder buyOrder){
+        if(buyOrder.getStockSymbol() != this.getStockSymbol()) return;
+        if(bestBuyOrder==null)bestBuyOrder=buyOrder;
+        else if(buyOrder.getPrice() > bestBuyOrder.getPrice()){
+            secondBestBuyOrder = bestBuyOrder;
+            bestBuyOrder = buyOrder;
+        }
+        else if(secondBestBuyOrder==null)secondBestBuyOrder=buyOrder;
+        else if(buyOrder.getPrice() > secondBestBuyOrder.getPrice())secondBestBuyOrder=buyOrder;
+        else return;
+    }
+
+    public void addOrderToMarket(SellOrder sellOrder){
+        if(sellOrder.getStockSymbol() != this.getStockSymbol()) return;
+        if(bestSellOrder==null)bestSellOrder=sellOrder;
+        else if(sellOrder.getPrice() < bestSellOrder.getPrice()){
+            secondBestSellOrder = bestSellOrder;
+            bestSellOrder = sellOrder;
+        }
+        else if(secondBestSellOrder==null)secondBestSellOrder=sellOrder;
+        else if(sellOrder.getPrice() < secondBestSellOrder.getPrice())secondBestSellOrder=sellOrder;
+        else return;
+    }
+
+    public Transaction placeOrder(BuyOrder buyOrder){
+        if(!this.isOpen() || !this.isValidOrder(buyOrder)) return null;
+        return null;
+    }
+
+    public Transaction placeOrder(SellOrder sellOrder){
+        if(!this.isOpen() || !this.isValidOrder(sellOrder)) return null;
+        return null;
+    }
 
 
 
