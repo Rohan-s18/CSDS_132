@@ -99,6 +99,14 @@ public class Market extends Trader {
         return marketMakerBuyOrder.getPrice();
     }
 
+    public double currentMarketSellPrice(){
+        if(getBestSellOrder() != null) return getBestSellOrder().getPrice();
+        return marketMakerSellOrder.getPrice();
+    }
+
+    public boolean isOpen(){
+        return (marketMakerBuyOrder!=null && marketMakerSellOrder!=null);
+    }
     
 
 
