@@ -9,7 +9,7 @@ This repository is organised by semester:
   
 ## Spring 2023
 This directory contains the source code for all of the CSDS 132 projects for the Spring 2023 semester. The projects for this semester are:  
-  - **Project 1:**  
+  - **Project 1:** Stock Market Simulator in Java (Completed).   
   - **Project 2:**  
   - **Project 3:**  
   - **Project 4:**  
