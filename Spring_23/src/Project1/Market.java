@@ -13,12 +13,10 @@ public class Market extends Trader {
     private SellOrder secondBestSellOrder;
     private MarketBuyOrder marketMakerBuyOrder;
     private MarketSellOrder marketMakerSellOrder;
-    private String name;
     
 
     public Market(String name, char symbol, double tradeFee, double commission, int orderSize, double priceOffset){
         super(name);
-        this.name = name;
         this.symbol = symbol;
         this.tradeFee = tradeFee;
         this.commission = commission;
@@ -46,11 +44,11 @@ public class Market extends Trader {
         this.tradeFee = tradeFee;
     }
 
-    public int getMarketSize(){
+    public int getMarketOrderSize(){
         return orderSize;
     }
 
-    public void setMarketSize(int size){
+    public void setMarketOrderSize(int size){
         orderSize = size;
     }
 
@@ -142,11 +140,43 @@ public class Market extends Trader {
 
     public Transaction placeOrder(BuyOrder buyOrder){
         if(!this.isOpen() || !this.isValidOrder(buyOrder)) return null;
+        if(matchingOrders(buyOrder, bestSellOrder)){
+            Transaction transaction = new Transaction(getStockSymbol(), Math.min(buyOrder.getNumberShares(), getBestSellOrder().getNumberShares()) , getBestSellOrder().getPrice(), buyOrder.getTrader(), getBestSellOrder().getTrader(), this);
+            bestSellOrder = secondBestSellOrder;
+            secondBestSellOrder = null;
+            return transaction;
+        }
+        if(matchingOrders(buyOrder, secondBestSellOrder)){
+            Transaction transaction = new Transaction(getStockSymbol(), Math.min(buyOrder.getNumberShares(), get2ndBestSellOrder().getNumberShares()) , get2ndBestSellOrder().getPrice(), buyOrder.getTrader(), get2ndBestSellOrder().getTrader(), this);
+            secondBestSellOrder = null;
+            return transaction;
+        }
+        if(matchingOrders(buyOrder, marketMakerSellOrder)){
+            Transaction transaction = new Transaction(getStockSymbol(), Math.min(buyOrder.getNumberShares(), getMarketOrderSize()) , getMarketSellOrder().getPrice()+getPriceOffset(), buyOrder.getTrader(), getMarketSellOrder().getTrader(), this);
+            return transaction;
+        }
+        addOrderToMarket(buyOrder);
         return null;
     }
 
     public Transaction placeOrder(SellOrder sellOrder){
         if(!this.isOpen() || !this.isValidOrder(sellOrder)) return null;
+        if(matchingOrders(getBestBuyOrder(), sellOrder)){
+            Transaction transaction = new Transaction(getStockSymbol(), Math.min(getBestBuyOrder().getNumberShares(), sellOrder.getNumberShares()) , getBestBuyOrder().getPrice(), getBestBuyOrder().getTrader(), getBestSellOrder().getTrader(), this);
+            bestBuyOrder = secondBestBuyOrder;
+            secondBestBuyOrder = null;
+            return transaction;
+        }
+        if(matchingOrders(get2ndBestBuyOrder(), sellOrder)){
+            Transaction transaction = new Transaction(getStockSymbol(), Math.min(get2ndBestBuyOrder().getNumberShares(), sellOrder.getNumberShares()) , get2ndBestBuyOrder().getPrice(), get2ndBestBuyOrder().getTrader(), get2ndBestSellOrder().getTrader(), this);
+            secondBestBuyOrder = null;
+            return transaction;
+        }
+        if(matchingOrders(getMarketBuyOrder(), sellOrder)){
+            Transaction transaction = new Transaction(getStockSymbol(), Math.min(getMarketBuyOrder().getNumberShares(), sellOrder.getNumberShares()) , getMarketBuyOrder().getPrice()+getPriceOffset(), getMarketBuyOrder().getTrader(), getMarketSellOrder().getTrader(), this);
+            return transaction;
+        }
+        addOrderToMarket(sellOrder);
         return null;
     }
 

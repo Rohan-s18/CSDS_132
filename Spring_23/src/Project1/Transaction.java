@@ -48,7 +48,10 @@ public class Transaction {
     }
 
     public void processTransaction(){
-        
+        if(isClosed) return;
+        getBuyer().withdraw(getNumberShares()*getPrice() + (maker.getTradeFee() + (maker.getCommission()*getNumberShares())));
+        getSeller().deposit(getNumberShares()*getPrice() - (maker.getTradeFee() + (maker.getCommission()*getNumberShares())));
+        isClosed=true;
     }
 
 
