@@ -65,7 +65,22 @@ public class HW2{
     }
 
     public static String reverseDigits(String string){
-        return string;
+        StringBuilder stringBuilder = new StringBuilder();
+        int i = 0; 
+        int j = string.length() - 1;
+        while(i < string.length()){
+            while(i < string.length() && (((int)string.charAt(i) > 57) || (int)string.charAt(i) < 48)){
+                stringBuilder.append(string.charAt(i));
+                i++;
+            }
+            while(j >= 0 && (string.charAt(j) > '9' || string.charAt(j) < '0'))
+                j--;
+            if(j >= 0)
+                stringBuilder.append(string.charAt(j));
+            i++;
+            j--;
+        }
+        return stringBuilder.toString();
     }
 
     public static String editOut(String string){
@@ -94,6 +109,10 @@ public class HW2{
         System.out.println();
 
         System.out.println(flipEachK("abcdefghijklmn", 4));
+
+        System.out.println();
+
+        System.out.println(reverseDigits("0 the d1gits of the2 string3 4 are8 reversed 9!"));
 
         System.out.println("\n");
 
