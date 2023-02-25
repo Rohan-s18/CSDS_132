@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+
+<html>
+
 <head>
 <title>CSDS 132: Homework Project 2</title>
 </head>
@@ -76,14 +80,14 @@ a reader to jump back and forth between the report and the tests.</p>
 
 <p><strong>Guidelines for the program</strong>:
 <ul>
-<li>All methods listed below must be **public** and **static**.</li>
-<li>If your code is using a loop to modify or create a string, you need to use the **StringBuilder** class from the API.</li>
+<li>All methods listed below must be <tt>public</tt> and <tt>static</tt>.</li>
+<li>If your code is using a loop to modify or create a string, you need to use the <tt>StringBuilder</tt> class from the API.</li>
 <li>Keep the loops simple but also efficient.  Remember that you want each loop to do only one "task" while also avoiding unnecessary traversals of the data or lots of unnecessary extra memory.</li>
 <li>No additional methods are needed.  
 However, you may write additional <em>private</em> helper methods, but you still need to have efficient and simple algorithms. Do not write helper methods that do a significant number of <em>unnecessary</em>
 traversals of the data.</li>
-<li><strong><em>Important</em></strong>: you must not use either **break** or **continue** in your code.  These two commands almost always are used to compensate for
-a poorly designed loop.  Likewise, you must not write code that mimics what **break** does.  Instead, re-write your loop so that the loop logic does not need break-type behavior.</li>
+<li><strong><em>Important</em></strong>: you must not use either <tt>break</tt> or <tt>continue</tt> in your code.  These two commands almost always are used to compensate for
+a poorly designed loop.  Likewise, you must not write code that mimics what <tt>break</tt> does.  Instead, re-write your loop so that the loop logic does not need break-type behavior.</li>
 <li>While it may be tempting to hunt through the API to find classes and methods that can shorten your code, you may not
 do that.  The first reason is that this homework is an exercise in writing loops, not in using the API.  The second reason is that in a lot of cases, the API methods may shorten the <em>writing</em> of your code but increase its <em>running time</em>.
 The only classes and methods you can use are listed below.  Note: if a method you want to use from the API is not listed, you should <em>not</em> implement the method yourself so you can use it.
@@ -108,52 +112,52 @@ Rather, you shoud look for the solution that does not need that method.</p>
 </ul>
 </p>
 
-<p>Create a class called **HW2** that contains the following methods:
+<p>Create a class called <tt>HW2</tt> that contains the following methods:
 <ol>
-<li><p>**matchingParentheses** takes a **String** as input and returns a **boolean**:<br />
-The method should return true if all the parentheses (if any) in the input are properly matched.  Any closing parenthesis **')'** should be preceded by
-a matching open parenthesis **'('** and there should be exactly one open parenthesis for each closed parenthesis.
+<li><p><tt>matchingParentheses</tt> takes a <tt>String</tt> as input and returns a <tt>boolean</tt>:<br />
+The method should return true if all the parentheses (if any) in the input are properly matched.  Any closing parenthesis <tt>')'</tt> should be preceded by
+a matching open parenthesis <tt>'('</tt> and there should be exactly one open parenthesis for each closed parenthesis.
  <br />
-**matchingParentheses("This is a (test (of the) (matching)) parentheses")** should return **true**<br />
-**matchingParentheses("The (second closing) parenthesis) does not match")** should return **false**
+<tt>matchingParentheses("This is a (test (of the) (matching)) parentheses")</tt> should return <tt>true</tt><br />
+<tt>matchingParentheses("The (second closing) parenthesis) does not match")</tt> should return <tt>false</tt>
 </p></li>
 
-<li><p>**everyNthExcept(String string, int start, int skip, int except)** returns a **String**<br />
-Returns every **skip**th character of **string**, starting with the **start**-th character, except
-do not include the character if it is one of the **except**-th characters from **start**.  For example:
-**everyNthExcept(s, 2, 2, 4)** should include every 2nd character of **s**, starting with the second character
-of **s**, but it does not include every 4th character after the second character of **s**.
-You can assume **start**, **skip**, and **except** are all positive.<br />
-**everyNthExcept("abcdefghijklmnop", 2, 2, 4)** should return **"bdhlp"**<br />
-**everyNthExcept("abcdefghijklmnop", 3, 2, 4)** should return **"ceim"**
+<li><p><tt>everyNthExcept(String string, int start, int skip, int except)</tt> returns a <tt>String</tt><br />
+Returns every <tt>skip</tt>th character of <tt>string</tt>, starting with the <tt>start</tt>-th character, except
+do not include the character if it is one of the <tt>except</tt>-th characters from <tt>start</tt>.  For example:
+<tt>everyNthExcept(s, 2, 2, 4)</tt> should include every 2nd character of <tt>s</tt>, starting with the second character
+of <tt>s</tt>, but it does not include every 4th character after the second character of <tt>s</tt>.
+You can assume <tt>start</tt>, <tt>skip</tt>, and <tt>except</tt> are all positive.<br />
+<tt>everyNthExcept("abcdefghijklmnop", 2, 2, 4)</tt> should return <tt>"bdhlp"</tt><br />
+<tt>everyNthExcept("abcdefghijklmnop", 3, 2, 4)</tt> should return <tt>"ceim"</tt>
 </p></li>
 
-<li><p>**flipEachK** should take a **String** and an **int** as input and returns a **String**. <br />
+<li><p><tt>flipEachK</tt> should take a <tt>String</tt> and an <tt>int</tt> as input and returns a <tt>String</tt>. <br />
 Let <em>k</em> be the name of the input integer.  The output string should contain the first <em>k</em> characters of the
 input string in order, the next <em>k</em> characters of the input string in reverse order, the next <em>k</em> characters
 of the input string in normal order, and so on.  The output string should have all the characters of the input string and 
 no others.<br />
-**flipEachK("abcdefghijklmn", 4)** should return **"abcdhgfeijklnm"**
+<tt>flipEachK("abcdefghijklmn", 4)</tt> should return <tt>"abcdhgfeijklnm"</tt>
 </p>
 </li>
 
-<li><p>**reverseDigits** should take a **String** as input and output a **String**.<br />
-The output **String** should be identical to the input **String** except all digits (0 through 9) of
-the input **String** are in reverse order (but same locations) in the output **String**.<br />
-**reverseDigits("0 the d1gits of the2 string3 4 are8 reversed 9!")** should return **"9 the d8gits of the4 string3 2 are1 reversed 0!"**
+<li><p><tt>reverseDigits</tt> should take a <tt>String</tt> as input and output a <tt>String</tt>.<br />
+The output <tt>String</tt> should be identical to the input <tt>String</tt> except all digits (0 through 9) of
+the input <tt>String</tt> are in reverse order (but same locations) in the output <tt>String</tt>.<br />
+<tt>reverseDigits("0 the d1gits of the2 string3 4 are8 reversed 9!")</tt> should return <tt>"9 the d8gits of the4 string3 2 are1 reversed 0!"</tt>
 </p></li>
 
-<li><p>**editOut** should take a **String** as input and output a **String**.<br />
-You may assume the input **String** has properly matched parentheses. <em>The behavior for improperly matched parentheses is up to you, but the method should not crash.</em>
-The output **String** should be identical to the input **String** except that any text inside a pair of matched parentheses is removed, including the parentheses.
+<li><p><tt>editOut</tt> should take a <tt>String</tt> as input and output a <tt>String</tt>.<br />
+You may assume the input <tt>String</tt> has properly matched parentheses. <em>The behavior for improperly matched parentheses is up to you, but the method should not crash.</em>
+The output <tt>String</tt> should be identical to the input <tt>String</tt> except that any text inside a pair of matched parentheses is removed, including the parentheses.
 In addition, if there is a pair of matched parentheses inside the removed text, that text should be retained (though the parentheses should be removed).  If there are any matched parentheses
 inside the retained text, that text should be removed, and so on.<br />
-**editOut("this is an (unusual (example)) of (editing out and (retaining)) text")** should return **"this is an example of retaining text"**<br />
-**editOut("this is (another) (example) showing (((((removal))))) -( and )- ((((retention))))")** should return **"this is&nbsp;&nbsp;&nbsp;showing&nbsp;&nbsp-- retention"**
+<tt>editOut("this is an (unusual (example)) of (editing out and (retaining)) text")</tt> should return <tt>"this is an example of retaining text"</tt><br />
+<tt>editOut("this is (another) (example) showing (((((removal))))) -( and )- ((((retention))))")</tt> should return <tt>"this is&nbsp;&nbsp;&nbsp;showing&nbsp;&nbsp-- retention"</tt>
 </p>
 </li>
 
-<li><p>**replaceText** takes two **String**s as input and returns a **String**.<br />
+<li><p><tt>replaceText</tt> takes two <tt>String</tt>s as input and returns a <tt>String</tt>.<br />
 Each input string will have text with zero or more substrings marked by matching parentheses.
 The returned string should contain the contents of the first string, except that
 each substring that is inside parentheses in the first input string is replaced by the
@@ -162,17 +166,17 @@ is replaced by the first substring of string 2, the second by the second, and so
 substrings in matching parentheses than the second string does, the substrings are simply removed.
 If the second string has more substrings in matching parentheses, these are ignored.
 Any nested and matched parentheses (matched parentheses inside the outer set of matched parentheses) should be treated as regular characters.<br />
-**replaceText("a (simple) programming (example)", "(cool) (problem)")** should return **"a cool programming problem"**<br />
-**replaceText("a ((nested) example) with (three) replacements (to (handle))", "the replacements are (answer) and (really (two) not three)")** should return **"an answer with really (two) not three replacements "**
+<tt>replaceText("a (simple) programming (example)", "(cool) (problem)")</tt> should return <tt>"a cool programming problem"</tt><br />
+<tt>replaceText("a ((nested) example) with (three) replacements (to (handle))", "the replacements are (answer) and (really (two) not three)")</tt> should return <tt>"an answer with really (two) not three replacements "</tt>
 <br />
 As before, the behavior for unmatched parentheses is up to you, but your method should not crash.
 </p></li>
 
 
-<li><p><strong>Extra Credit:</strong> **reverseAll** should take a **String** and return a **String**<br />
+<li><p><strong>Extra Credit:</strong> <tt>reverseAll</tt> should take a <tt>String</tt> and return a <tt>String</tt><br />
 All substrings inside matching parentheses should be reversed.  If the reversed portion contains matching parentheses, these should be "re-reversed" and so on.
 The parentheses should still be correctly matched and nested about the different affected substrings.<br />
-**reverseAll("a b (c d e (f g) (h (i j k l (m n o) (p q)) r s t)) (u v w) x y z")** should return **"a b ((h ((p q) (m n o) l k j i) r s t) (f g) e d c) (w v u) x y z"**
+<tt>reverseAll("a b (c d e (f g) (h (i j k l (m n o) (p q)) r s t)) (u v w) x y z")</tt> should return <tt>"a b ((h ((p q) (m n o) l k j i) r s t) (f g) e d c) (w v u) x y z"</tt>
 </p></li>
 
 
@@ -181,7 +185,10 @@ The parentheses should still be correctly matched and nested about the different
 <hr>
 
 <h3>V. Submitting Your Project</h3>
-<p>Submit the **.java** file (not the **.class** files or the **.java~** files) 
+<p>Submit the <tt>.java</tt> file (not the <tt>.class</tt> files or the <tt>.java~</tt> files) 
 of your class plus the testing report on Canvas.</p>
 
 </body>
+
+</html>
+
