@@ -1,9 +1,7 @@
-<head>
-<title>CSDS 132: Homework Project 2</title>
-</head>
+
 
 <body>
-<h2>Programming Project 2</h2>
+<h1>Programming Project 2</h1>
 <h3>Due Friday, March 3 at 11:59pm</h3>
 
 <p><em><strong>IMPORTANT:</strong> Read the
