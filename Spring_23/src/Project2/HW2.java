@@ -84,7 +84,21 @@ public class HW2{
     }
 
     public static String editOut(String string){
-        return string;
+        if(!matchingParentheses(string))
+            return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        int ct = 0;
+        for(int i = 0; i < string.length(); i++){
+            if(string.charAt(i) == '(')
+                ct++;
+            else if(string.charAt(i)==')')
+                ct--;
+            else if(ct%2==0)
+                stringBuilder.append(string.charAt(i));
+            else; 
+
+        }
+        return stringBuilder.toString();
     }
 
     public static String replaceText(String string1, String string2){
@@ -113,6 +127,11 @@ public class HW2{
         System.out.println();
 
         System.out.println(reverseDigits("0 the d1gits of the2 string3 4 are8 reversed 9!"));
+
+        System.out.println();
+
+        System.out.println(editOut("this is an (unusual (example)) of (editing out and (retaining)) text"));
+        System.out.println(editOut("this is (another) (example) showing (((((removal))))) -( and )- ((((retention))))"));
 
         System.out.println("\n");
 
