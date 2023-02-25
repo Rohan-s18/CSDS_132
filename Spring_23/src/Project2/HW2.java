@@ -2,6 +2,13 @@ package Project2;
 
 public class HW2{
 
+    private static String reverseString(String string){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = string.length() - 1; i >= 0; i--)
+            stringBuilder.append(string.charAt(i));
+        return stringBuilder.toString();
+    }
+
     public static boolean matchingParentheses(String string){
         int ct = 0;
         boolean encountered = false;
@@ -21,16 +28,40 @@ public class HW2{
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(string.charAt(start));
 
-        for(int i = start; i < string.length(); i++){
-            if((i-start)%skip==0 && (i-start)%except!=0)
+        for(int i = start; i < string.length(); i+=skip){
+            if((i-start)%except!=0)
                 stringBuilder.append(string.charAt(i));
         }
 
         return stringBuilder.toString();
     }
 
-    public static String flipEachK(String string){
-        return string;
+    public static String flipEachK(String string, int k){
+        StringBuilder stringBuilder = new StringBuilder();
+        int index = 0;
+        int subcount = 0;
+        boolean order = true;
+        while(index < string.length()){
+            if(subcount==k){
+                order=(!order);
+                subcount = 0;
+            }
+                
+            if(order){
+                stringBuilder.append(string.charAt(index));
+                index++;
+                subcount++;
+            }
+            else if(!order){
+                String tempString = reverseString(string.substring(index, Math.min(index+k, string.length())));
+                stringBuilder.append(tempString);
+                index+=k;
+                order=true;
+            }
+                
+        }
+        
+        return stringBuilder.toString();
     }
 
     public static String reverseDigits(String string){
@@ -59,6 +90,10 @@ public class HW2{
 
         System.out.println(everyNthExcept("abcdefghijklmnop", 2, 2, 4));
         System.out.println(everyNthExcept("abcdefghijklmnop", 3, 2, 4));
+
+        System.out.println();
+
+        System.out.println(flipEachK("abcdefghijklmn", 4));
 
         System.out.println("\n");
 
